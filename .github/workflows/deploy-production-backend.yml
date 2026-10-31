@@ -1,0 +1,25 @@
+name: Deploy Production - Backend Node.js
+
+run-name: ${{ github.actor }} - Desplegando Backend a Producción
+
+on:
+  workflow_dispatch: # Ideal para controlar despliegues críticos manualmente
+  push:
+    branches:
+      - main
+
+jobs:
+  desplegar-backend-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v6
+
+      - name: Preparar infraestructura AWS
+        run: echo "Verificando estado de la infraestructura de producción en AWS."
+
+      - name: Publicar Backend
+        run: echo "Desplegando versión estable de Node.js en AWS."
+
+      - name: Pruebas de humo
+        run: echo "Ejecutando verificaciones de respuesta rápida en producción."
