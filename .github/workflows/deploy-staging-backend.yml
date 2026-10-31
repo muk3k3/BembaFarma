@@ -3,14 +3,18 @@ name: Deploy Staging - Backend Node.js
 run-name: ${{ github.actor }} - Desplegando Backend a Staging
 
 on:
-  workflow_dispatch: # Ejecución manual con botón en GitHub
-  push:
+  workflow_run:
+    workflows: ["CI - Backend Node.js"] 
+    types:
+      - completed
     branches:
-      - develop # Automático cuando se une código a develop
+      - develop 
 
 jobs:
   desplegar-backend-staging:
     runs-on: ubuntu-latest
+    
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v6

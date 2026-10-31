@@ -3,14 +3,17 @@ name: Deploy Production - Backend Node.js
 run-name: ${{ github.actor }} - Desplegando Backend a Producción
 
 on:
-  workflow_dispatch: # Ideal para controlar despliegues críticos manualmente
-  push:
+  workflow_run:
+    workflows: ["CI - Backend Node.js"]
+    types:
+      - completed
     branches:
-      - main
+      - main 
 
 jobs:
   desplegar-backend-prod:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v6

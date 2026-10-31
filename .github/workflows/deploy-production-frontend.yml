@@ -3,14 +3,17 @@ name: Deploy Production - Frontend React
 run-name: ${{ github.actor }} - Desplegando Frontend a Producción
 
 on:
-  workflow_dispatch:
-  push:
+  workflow_run:
+    workflows: ["CI - Frontend React"]
+    types:
+      - completed
     branches:
       - main
 
 jobs:
   desplegar-frontend-prod:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v6

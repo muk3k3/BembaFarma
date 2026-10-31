@@ -12,7 +12,6 @@ on:
     branches:
       - develop
       - main
-  workflow_dispatch: # Permite probarlo manualmente si se desea
 
 jobs:
   validar-backend:
