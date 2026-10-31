@@ -16,3 +16,8 @@ jobs:
         
       - name: Listar los archivos del repositorio
         run: ls ${{ github.workspace }}
+
+      - name: Usar un secreto de forma segura
+        env:
+          SECRET_NAME2: ${{ secrets.SECRET_NAME }}
+        run: echo "Mi secreto configurado correctamente"
