@@ -12,7 +12,7 @@ jobs:
       - run: echo "El nombre de la rama es ${{ github.ref }}. Y el repositorio es ${{ github.repository }}"
       
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         
       - name: Listar los archivos del repositorio
         run: ls ${{ github.workspace }}
