@@ -20,4 +20,4 @@ jobs:
       - name: Usar un secreto de forma segura
         env:
           SECRET_NAME2: ${{ secrets.SECRET_NAME }}
-        run: echo "Mi secreto configurado correctamente"
+        run: echo "Mi secreto es $SECRET_NAME2. ${{secrets.SECRET_NAME}}. ${{vars.NAME}}"
